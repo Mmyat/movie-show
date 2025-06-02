@@ -86,7 +86,7 @@ export default function Home() {
   if (!popularMovies.length || !trendingMovies.length) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="z-0">
       {/* Popular Movies Carousel */}
       <h3 className="font-bold border-b mb-4 pb-2">Popular Movies</h3>
       <Carousel opts={{align: "start",loop: false}} plugins={[Autoplay({ delay: 3000})]} className="">
