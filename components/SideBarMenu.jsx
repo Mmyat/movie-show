@@ -1,23 +1,20 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
+import api from "@/lib/apiClient/api";
+import { endpoints } from "@/lib/apiClient/endpoint";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect,useState } from "react";
 
-const SideBarMenu = ({apikey,token}) => {
+const SideBarMenu = () => {
     const pathname = usePathname();
     const [data, setData] = useState([]);
     
     async function fetchGenres() {
-        const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=a9f349c5e40a298d426a92d2b800bba7`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-    });    
-    setData(response.data);
-    return;
-}
+        const response = await api.get(`${endpoints.getMovieTypes}`); 
+        setData(response);
+        return;
+    }
     // Helper function to check if a link is active
     const isActive = (href) => {
         const isActive = pathname === href;   
@@ -31,7 +28,7 @@ const SideBarMenu = ({apikey,token}) => {
             <Button variant="ghost" className="w-full justify-start mb-2">
                 <Link 
                     href="/" 
-                    className={`flex items-center gap-2 ${isActive("/") ? "text-cyan-400" : "text-gray-700"}`}
+                    className={`flex items-center gap-2 ${isActive("/") ? "text-cyan-400" : "text-gray-700 dark:text-gray-300"}`}
                 >
                     <svg
                         width="15"
@@ -58,7 +55,7 @@ const SideBarMenu = ({apikey,token}) => {
                     >
                         <Link
                             href={href}
-                            className={`flex items-center gap-2 ${isActive(href) ? "text-cyan-400" : "text-gray-700"}`}
+                            className={`flex items-center gap-2 ${isActive(href) ? "text-cyan-400" : "text-gray-700 dark:text-gray-300"}`}
                         >
                             <svg
                                 width="15"

@@ -14,8 +14,8 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default async function RootLayout({ children }) {
-  const apikey = process.env.API_KEY;
-  const token = process.env.TOKEN;
+  const apikey = process.env.NEXT_PUBLIC_API_KEY;
+  const token = process.env.NEXT_PUBLIC_TOKEN;
   return (
     <html lang="en">
 	  <head>

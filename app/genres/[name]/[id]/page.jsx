@@ -1,18 +1,11 @@
 import Movies from "@/components/Movies";
-
-const token = process.env.TOKEN;
+import api from "@/lib/apiClient/api";
+import { endpoints } from "@/lib/apiClient/endpoint";
 
 async function fetchMovies(id) {
-	const res = await fetch(
-		`https://api.themoviedb.org/3/discover/movie?with_genres=${id}`,
-		{
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		}
-	);
-
-	return await res.json();
+	const res = await api.get(
+		`${endpoints.getMovieByGenreId}${id}`);
+	return res;
 }
 
 export default async function Home({ params }) {

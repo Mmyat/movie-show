@@ -1,23 +1,18 @@
 import Movies from "@/components/Movies";
+import api from "@/lib/apiClient/api";
+import { endpoints } from "@/lib/apiClient/endpoint";
 
 const token = process.env.TOKEN;
 
 async function fetchSearch(query) {
-	const res = await fetch(
-		`https://api.themoviedb.org/3/search/movie?query=${query}`,
-		{
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		}
-	);
-
-	return await res.json();
+	const res = await api.get(`${endpoints.searchMovieByQuery}${query}`);
+	return res;
 }
 
 export default async function Search({ searchParams }) {
 	const search = await fetchSearch(searchParams.q);
-
+	console.log("Search Results:", search);
+	
 	return (
 		<>
 			<h3 className="text-lg mb-3">Search: {searchParams.q}</h3>

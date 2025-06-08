@@ -1,15 +1,7 @@
+import api from "@/lib/apiClient/api";
+import { endpoints } from "@/lib/apiClient/endpoint";
 import { NextResponse } from "next/server";
-
-const token = process.env.TOKEN;
-
 export async function GET(request, { params }) {
-    const res = await fetch(`https://api.themoviedb.org/3/person/${params.id}`, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
-    
-    const data = await res.json();
-
-    return NextResponse.json(data);
+    const res = await api.get(`${endpoints.getPersonalInfoById}${params.id}`);
+    return NextResponse.json(res);
 }

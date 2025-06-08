@@ -11,12 +11,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sun,Moon,AlignJustify} from 'lucide-react';
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 const Header = () => {
   const [searchText,setSearchText]= useState("")
   const { setTheme } = useTheme();
+  const router = useRouter();
   async function search(formData) {
     const q = formData.get("q");
-    redirect(`/search?q=${q}`);
+    router.push(`/search?q=${q}`);
   }
     return (
     <Menubar className="fixed top-0 left-0 right-0 justify-between mb-4 py-2 md:ml-[200px]">

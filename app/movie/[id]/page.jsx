@@ -1,34 +1,22 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import api from "@/lib/apiClient/api";
+import { endpoints } from "@/lib/apiClient/endpoint";
 
 const token = process.env.TOKEN;
 async function fetchMovie(id) {
-	const res = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
-
-	return await res.json();
+	const res = await api.get(`${endpoints.getMovieById}${id}`);
+	return  res;
 }
 
 async function fetchCasts(id) {
-	const res = await fetch(
-		`https://api.themoviedb.org/3/movie/${id}/credits`,
-		{
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		}
-	);
-
-	return (await res.json()).cast;
+	const res = await api.get(`${endpoints.getMovieById}${id}/credits`);
+	return res.cast;
 }
 
 export default async function Movie({ params }) {
 	const movie = await fetchMovie(params.id);
 	const casts = await fetchCasts(params.id);
-
 	const cover = "http://image.tmdb.org/t/p/w1280";
 	const profile = "http://image.tmdb.org/t/p/w185";
 
@@ -40,7 +28,6 @@ export default async function Movie({ params }) {
 					({movie.release_date.split("-")[0]})
 				</span>
 			</h2>
-
 			<div className="mb-4 mt-2">
 				{movie.genres.map(genre => {
 					return (
@@ -52,16 +39,13 @@ export default async function Movie({ params }) {
 					);
 				})}
 			</div>
-
 			<img
 				src={`${cover}${movie.backdrop_path}`}
 				className="w-fit"
 			/>
 			<p className="mt-3">{movie.overview}</p>
-
 			<div className="mt-4 border-t pt-3">
 				<h5 className="mb-2">Starring</h5>
-
 				<div className="flex gap-4 flex-row flex-wrap">
 					{casts.map(cast => {
 						return (
