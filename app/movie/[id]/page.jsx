@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import api from "@/lib/apiClient/api";
 import { endpoints } from "@/lib/apiClient/endpoint";
 
-const token = process.env.TOKEN;
 async function fetchMovie(id) {
 	const res = await api.get(`${endpoints.getMovieById}${id}`);
 	return  res;

@@ -25,7 +25,7 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen flex flex-col">
-          <Header className="z-50 relative mb-12" />
+          <Header className="z-50 sticky top-0 bg-background" />
             <div className="flex flex-1 mt-20">
               <SideBarMenu apikey={apikey} token={token}/>
               <main className="sm:ml-0 md:ml-[200px] p-4 w-full overflow-y-auto">

@@ -54,13 +54,13 @@ const CardSlider = (movieList) => {
     }
   };
   return (
-    <div className="relative w-full max-w-sm overflow-hidden">
+    <div className="relative w-full max-w-sm overflow-hidden z-10">
         <Carousel ref={carouselRef} className="w-full">
           <CarouselContent className="flex transition-all ease-in-out duration-500">
             {extendedMovieList.map((movie, index) => (
               <CarouselItem
                 key={index}
-                className="pl-1 md:basis-1/2 lg:basis-1/3 flex-shrink-0 w-full"
+                className="pl-1 basis-2/3 md:basis-1/2 lg:basis-1/3 flex-shrink-0 w-full"
               >
                 <div className="p-1">
                   <Card>
@@ -68,7 +68,7 @@ const CardSlider = (movieList) => {
                       <Link href={`/movie/${movie.id}`}>
                         <img
                           src={`${poster}${movie.poster_path}`}
-                          className="w-full hover:scale-105 transition-all"
+                          className="w-[100px] h-[200px] hover:scale-105 transition-all"
                           alt={movie.title}
                         />
                       </Link>

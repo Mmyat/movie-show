@@ -86,24 +86,24 @@ export default function Home() {
   if (!popularMovies.length || !trendingMovies.length) return <div>Loading...</div>;
 
   return (
-    <div className="z-0">
+    <div className="z-10">
       {/* Popular Movies Carousel */}
       <h3 className="font-bold border-b mb-4 pb-2">Popular Movies</h3>
-      <Carousel opts={{align: "start",loop: false}} plugins={[Autoplay({ delay: 3000})]} className="">
+      <Carousel opts={{align: "start",loop: false}} plugins={[Autoplay({ delay: 3000})]} className="relative z-10">
         <CarouselContent
           className="flex transition-transform ease-in-out duration-500"
           style={{
             transform: `translateX(-${popularIndex * 100}%)`,
           }}>
           {popularMovies.map((movie, index) => (
-            <CarouselItem key={index} className="flex md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={index} className="flex basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
               <div>
                 <Card>
                   <CardContent className="flex flex-col w-full h-1/3 aspect-square items-center justify-center">
                     <img
                       src={`${posterUrl}${movie.poster_path}`}
                       alt={movie.title}
-                      className="w-full h-auto"
+                      className="w-[200px] md:w-full h-auto z-10"
                     />
                     <h4>{movie.title}</h4>
                     <span className="text-sm text-gray-500">
@@ -127,7 +127,7 @@ export default function Home() {
           }}
         >
           {trendingMovies.map((movie, index) => (
-            <CarouselItem key={index} className="flex md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={index} className="flex basis-1/3 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
               <div>
                 <Card>
                   <CardContent className="flex flex-col w-full h-1/3 aspect-square items-center justify-center">
