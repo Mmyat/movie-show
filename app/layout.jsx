@@ -14,8 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default async function RootLayout({ children }) {
-  const apikey = process.env.NEXT_PUBLIC_API_KEY;
-  const token = process.env.NEXT_PUBLIC_TOKEN;
+
   return (
     <html lang="en">
 	  <head>
@@ -27,7 +26,7 @@ export default async function RootLayout({ children }) {
           <div className="min-h-screen flex flex-col">
           <Header className="z-50 sticky top-0 bg-background" />
             <div className="flex flex-1 mt-20">
-              <SideBarMenu apikey={apikey} token={token}/>
+              <SideBarMenu />
               <main className="sm:ml-0 md:ml-[200px] p-4 w-full overflow-y-auto">
                 {children}
               </main>
