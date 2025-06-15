@@ -5,9 +5,9 @@ export default function Movies({ movies }) {
     return (
 		<>
 			<div className="flex flex-wrap flex-row gap-4">
-				{movies?.map(movie => {
+				{movies?.map((movie,index) => {
 					return (
-						<div className="w-[200px] text-center">
+						<div key={index} className="w-[200px] text-center">
 							<Link href={`/movie/${movie.id}`}>
 								<img
 									src={`${poster}${movie.poster_path}`}

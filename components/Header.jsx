@@ -21,7 +21,7 @@ const Header = () => {
     router.push(`/search?q=${q}`);
   }
     return (
-    <Menubar className="fixed top-0 left-0 right-0 z-1000 bg-gray-100 dark:bg-gray-900 h-auto justify-between mb-4 py-2 md:ml-[200px]">
+    <Menubar className="fixed top-0 left-0 right-0 z-9999 bg-gray-100 dark:bg-gray-900 h-auto justify-between mb-4 py-2 md:ml-[200px]">
       <div className="flex items-center">
         <AlignJustify className="block md:hidden cursor-pointer"/>
         <h1 className="ml-2 sm:text-xl md:text-2xl font-bold">Movie Show</h1>
