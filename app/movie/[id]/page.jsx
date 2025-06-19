@@ -80,7 +80,9 @@ export default function Movie({ params }) {
 								<div className="p-2">
 									<div className="text-sm">
 										<Link href={`/person/${cast.id}`}>
-											{cast?.name}
+											<p className="text-md text-gray-700 font-semibold">
+												{cast?.name}
+											</p>
 										</Link>
 									</div>
 									<span className="text-sm text-gray-500">

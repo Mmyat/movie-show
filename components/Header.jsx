@@ -23,35 +23,35 @@ const Header = () => {
     return (
     <Menubar className="fixed top-0 left-0 right-0 z-9999 bg-gray-100 dark:bg-gray-900 h-auto justify-between mb-4 py-2 md:ml-[200px]">
       <div className="flex items-center">
-        {/* Toggle menu bar */}
-        <AlignJustify className="block md:hidden cursor-pointer"/> 
-        <h1 className="ml-2 sm:text-xl md:text-2xl font-bold">Movie Show</h1>
+      {/* Toggle menu bar */}
+      <AlignJustify className="block md:hidden cursor-pointer"/> 
+      <h1 className="ml-2 sm:text-xl md:text-2xl font-bold">Movie Show</h1>
       </div>       
-        <form action={search} className="flex space-x-2 items-center mt-2">
-            <Input type="text" name="q" />
-            <Button type="submit">Search</Button>
-        </form>
-        <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost">
-            <Sun className=" scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className=" absolute scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setTheme("light")}>
-            Light
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("dark")}>
-            Dark
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("system")}>
-            System
-          </DropdownMenuItem>
-        </DropdownMenuContent>
+      <form action={search} className="flex space-x-2 items-center mt-2">
+        <Input type="text" name="q" className="bg-gray-50 dark:bg-gray-200" placeholder="Search movies"/>
+        <Button type="submit" className="hidden md:block">Search</Button>
+      </form>
+      <DropdownMenu className="hidden sm:block">
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost">
+        <Sun className=" scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <Moon className=" absolute scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+        Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+        System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
       </DropdownMenu>
     </Menubar>
-  )
+    )
 }
 
 export default Header;

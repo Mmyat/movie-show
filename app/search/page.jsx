@@ -8,9 +8,7 @@ async function fetchSearch(query) {
 }
 
 export default async function Search({ searchParams }) {
-	const search = await fetchSearch(searchParams.q);
-	console.log("Search Results:", search);
-	
+	const search = await fetchSearch(searchParams.q);	
 	return (
 		<>
 			<h3 className="text-lg mb-3">Search: {searchParams.q}</h3>
