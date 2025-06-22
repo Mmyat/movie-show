@@ -4,7 +4,7 @@ export default function Movies({ movies }) {
     const poster = "http://image.tmdb.org/t/p/w342";   
     return (
 		<>
-			<div className="flex flex-wrap flex-row gap-4">
+			<div className="flex flex-wrap flex-row justify-center gap-4">
 				{movies?.map((movie,index) => {
 					return (
 						<div key={index} className="w-[200px] text-center">

@@ -23,7 +23,7 @@ export default function PersonInfo( ) {
     };
     return (
         <div className="w-full items-center justify-center">
-            <button className="bg-gray-200 py-2 px-4 rounded-lg cursor-pointer" onClick={handleBack}>
+            <button className="bg-gray-200 hover:text-cyan-400 py-2 px-4 rounded-lg cursor-pointer" onClick={handleBack}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round" className="lucide lucide-move-left-icon lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
             </button>
             <div className="w-[500px] flex flex-col justify-center items-center" style={{ display: "flex", justifyContent: "center", width: "100%" }}>

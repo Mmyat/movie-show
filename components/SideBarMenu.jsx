@@ -5,6 +5,7 @@ import { endpoints } from "@/lib/apiClient/endpoint";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect,useState } from "react";
+import { useSidebar } from "../components/SidebarContext";
 
 const SideBarMenu = () => {
     const pathname = usePathname();
@@ -20,12 +21,20 @@ const SideBarMenu = () => {
         const isActive = pathname === href;   
         return isActive;
     };
+    const { isOpen, closeSidebar } = useSidebar();
     useEffect(() => {
         fetchGenres();
     }, [pathname]);
     return (
-        <aside className="hidden md:block bg-gray-100 dark:bg-gray-900 w-full max-w-[200px] p-4 border-r border-gray-300 dark:border-gray-700 fixed inset-0 z-40 overflow-y-scroll">
-            <Button variant="ghost" className="w-full justify-start mb-2">
+<aside
+      className={`${
+        isOpen ? "block" : "hidden"
+      } md:block bg-gray-100 dark:bg-gray-900 w-full max-w-[200px] p-4 border-r border-gray-300 dark:border-gray-700 fixed inset-0 z-40 overflow-y-scroll`}
+    >
+      {/* Add a close button for mobile */}
+      <button className="md:hidden text-sm text-right w-full" onClick={closeSidebar}>
+        ✕
+      </button>            <Button variant="ghost" className="w-full justify-start mb-2">
                 <Link 
                     href="/" 
                     className={`flex items-center gap-2 ${isActive("/") ? "text-cyan-400" : "text-gray-700 dark:text-gray-300"}`}

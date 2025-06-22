@@ -12,8 +12,11 @@ import { Button } from "@/components/ui/button";
 import { Sun,Moon,AlignJustify} from 'lucide-react';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSidebar } from "../components/SidebarContext";
+
 const Header = () => {
   const [searchText,setSearchText]= useState("")
+  const { toggleSidebar } = useSidebar();
   const { setTheme } = useTheme();
   const router = useRouter();
   async function search(formData) {
@@ -23,8 +26,8 @@ const Header = () => {
     return (
     <Menubar className="fixed top-0 left-0 right-0 z-9999 bg-gray-100 dark:bg-gray-900 h-auto justify-between mb-4 py-2 md:ml-[200px]">
       <div className="flex items-center">
-      {/* Toggle menu bar */}
-      <AlignJustify className="block md:hidden cursor-pointer"/> 
+      {/* Toggle sidebar menu bar */}
+      <AlignJustify className="block md:hidden cursor-pointer" onClick={toggleSidebar}/> 
       <h1 className="ml-2 sm:text-xl md:text-2xl font-bold">Movie Show</h1>
       </div>       
       <form action={search} className="flex space-x-2 items-center mt-2">
