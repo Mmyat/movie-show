@@ -21,6 +21,8 @@ const Header = () => {
   const router = useRouter();
   async function search(formData) {
     const q = formData.get("q");
+    // clear form input
+    setSearchText("");
     router.push(`/search?q=${q}`);
   }
     return (
@@ -29,9 +31,17 @@ const Header = () => {
       {/* Toggle sidebar menu bar */}
       <AlignJustify className="block md:hidden cursor-pointer" onClick={toggleSidebar}/> 
       <h1 className="ml-2 sm:text-xl md:text-2xl font-bold">Movie Show</h1>
-      </div>       
+      </div>     
+        {/*Clear search input after search or change another route  */}
       <form action={search} className="flex space-x-2 items-center mt-2">
-        <Input type="text" name="q" className="bg-gray-50 dark:bg-gray-200" placeholder="Search movies"/>
+        <Input
+          type="text"
+          name="q"
+          value={searchText}
+          onChange={e => setSearchText(e.target.value)}
+          className="bg-gray-50 text-gray-700 dark:text-gray-700 dark:bg-gray-200"
+          placeholder="Search movies"
+        />
         <Button type="submit" className="hidden md:block">Search</Button>
       </form>
       <DropdownMenu className="hidden sm:block">
